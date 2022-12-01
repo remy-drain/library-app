@@ -1,0 +1,125 @@
+:root {
+    /* color palette */
+    --white: 231, 223, 213;
+    --light: 132, 169, 172;
+    --medium: 59, 105, 120;
+    --dark: 32, 64, 81;
+    --black: 16, 32, 41;
+}
+
+* {
+    font-family: "Syne Mono", 'Courier New', Courier, monospace;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(var(--black));
+}
+
+body {
+    max-width: 900px;
+    display: grid;
+    justify-content: center;
+}
+
+#new-book {
+    margin: 10px auto;
+}
+
+form {
+    display: grid;
+    background: url('./images/card.jpg') no-repeat;
+    background-size: cover;
+    min-width: 330px;
+    gap: .5em;
+    max-width: 450px;
+    height: auto;
+    padding: 2em;
+    grid-template-areas:
+    "title x"
+    "author author"
+    "genre genre"
+    "length ."
+    "read submit";
+    grid-template-columns: 50% 50%;
+    position: relative;
+}
+
+form .title {
+    grid-area: title;
+    width: 100%;
+}
+
+form .close {
+    grid-area: x;
+    position: absolute;
+    top: -1em;
+    right: 0em;
+    padding: .2em;
+    border: 1px solid rgba(var(--black), 0.466);
+}
+
+form .close:hover {
+    cursor: pointer;
+}
+
+form .author {
+    grid-area: author;
+    width: 100%;
+}
+
+form .genre {
+    grid-area: genre;
+    width: 100%;
+}
+
+form .length {
+    grid-area: length;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+form .read {
+    grid-area: read;
+    width: 100%;
+}
+
+form #submit {
+    grid-area: submit;
+}
+
+input {
+    background: transparent;
+    border: transparent;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    border: 1px solid hsla(0, 0%, 0%, .71);
+    border-radius: 3px;
+    position: relative;
+    outline: transparent;
+}
+
+input[type="checkbox"]::before {
+    content: '✔';
+    position: absolute;
+    font-size: 1.3em;
+    right: -1px;
+    top: -.3em;
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked::before {
+    visibility: visible;
+    outline: none;
+}
+
+
+input:focus,
+input:focus-visible {
+    border-bottom: 1px solid black;
+    outline: 2px ridge rgba(255, 255, 255, 0.352);
+}
