@@ -92,6 +92,13 @@ form .read {
 
 form #submit {
     grid-area: submit;
+    padding: .2em;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+#submit:hover {
+    cursor: pointer;
 }
 
 input {
