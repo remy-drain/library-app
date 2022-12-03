@@ -17,6 +17,13 @@ const amariNightBrothers = new Book("Amari and the Night Brothers", "B. B. Alsto
 
 myLibrary.push(amariNightBrothers);
 
+// display form to add new book
+const newBookButton = document.querySelector("#new-book");
+newBookButton.addEventListener("click", () => {
+    const form = document.querySelector("form");
+    form.style.visibility = "visible";
+});
+
 // get form data
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", addBook);
@@ -35,6 +42,15 @@ document.querySelector("form").reset();
 document.querySelector("#title").focus();
 }
 
+// close form
+const close = document.querySelector(".close");
+close.addEventListener("click", () => {
+    const form = document.querySelector("form");
+    form.style.visibility = "hidden";
+});
+
+
+// display library
 function showBooks() {
-    
+
 }
