@@ -29,7 +29,7 @@ form {
     display: grid;
     background: url('./images/card.jpg') no-repeat;
     background-size: cover;
-    min-width: 330px;
+    min-width: 400px;
     gap: .5em;
     max-width: 450px;
     height: auto;
@@ -42,6 +42,7 @@ form {
     "read submit";
     grid-template-columns: 50% 50%;
     position: relative;
+    border-radius: 8px;
 }
 
 form .title {
@@ -51,11 +52,16 @@ form .title {
 
 form .close {
     grid-area: x;
+    display: flex;
     position: absolute;
     top: -1em;
     right: 0em;
-    padding: .2em;
-    border: 1px solid rgba(var(--black), 0.466);
+    height: 2em;
+    width: 2em;
+    border: 1px solid rgba(var(--black), 0.2);
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 }
 
 form .close:hover {
