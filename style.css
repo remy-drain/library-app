@@ -9,7 +9,7 @@
 
 * {
     font-family: "Syne Mono", 'Courier New', Courier, monospace;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: rgb(var(--black));
@@ -37,7 +37,6 @@ form {
     grid-template-areas:
     "title x"
     "author author"
-    "genre genre"
     "length ."
     "read submit";
     grid-template-columns: 50% 50%;
@@ -47,6 +46,8 @@ form {
 
 form .title {
     grid-area: title;
+    display: flex;
+    flex-direction: row;
     width: 100%;
 }
 
@@ -70,11 +71,8 @@ form .close:hover {
 
 form .author {
     grid-area: author;
-    width: 100%;
-}
-
-form .genre {
-    grid-area: genre;
+    display: flex;
+    flex-direction: row;
     width: 100%;
 }
 
@@ -104,6 +102,7 @@ form #submit {
 input {
     background: transparent;
     border: transparent;
+    border-bottom: 1px solid rgba(var(--black), .2);
 }
 
 input[type="checkbox"] {
@@ -134,5 +133,5 @@ input[type="checkbox"]:checked::before {
 input:focus,
 input:focus-visible {
     border-bottom: 1px solid black;
-    outline: 2px ridge rgba(255, 255, 255, 0.352);
+    outline: none;
 }
