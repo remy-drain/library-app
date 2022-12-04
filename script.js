@@ -112,11 +112,15 @@ function showBooks() {
         bookshelf.appendChild(bookCard);
     }
     const trashIcons = bookshelf.querySelectorAll(".delete-btn");
+    const readCheckbox = bookshelf.querySelectorAll(".read-div input");
 
     trashIcons.forEach((icon) => icon.addEventListener("click", (e) => removeBook(e.path)));
+
+    readCheckbox.forEach((box) => box.addEventListener("change", (e) => changeRead(e.target, e.path[2])));
 }
 
 function removeBook(e) {
+    // I know there's a better way, but this works for now
     const bookIndex = e[0].attributes["data-key"].nodeValue;
     let selectedBook = myLibrary[bookIndex];
 
@@ -124,4 +128,12 @@ function removeBook(e) {
         myLibrary.splice(bookIndex, 1);
     }
     showBooks();
+}
+
+function changeRead(e, parent) {
+    const bookIndex = parent.attributes["data-key"].value;
+    const checked = e.checked;
+
+    myLibrary[bookIndex].read = checked;
+    console.table(myLibrary[bookIndex]);
 }
