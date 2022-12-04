@@ -62,29 +62,40 @@ function showBooks() {
     }
 
     for (let volume of myLibrary) {
-        let bookCard = document.createElement('div');
-        let bookTitle = document.createElement('p');
-        let bookAuthor = document.createElement('p');
-        let bookPages = document.createElement('p');
-        let bookRead = document.createElement('div');
-        let readInput = document.createElement('input');
-        let readLabel = document.createElement('label');
-        let bookIndex = myLibrary.indexOf(volume);
+        const bookCard = document.createElement('div');
+        const titlePlate = document.createElement('div');
+        const bookTitle = document.createElement('p');
+        const bookAuthor = document.createElement('p');
+        const bookPages = document.createElement('p');
+        const bookRead = document.createElement('div');
+        const readInput = document.createElement('input');
+        const readLabel = document.createElement('label');
+        const deleteBtn = document.createElement('img');
+        const bookIndex = myLibrary.indexOf(volume);
+
+
+        let pageCount = volume.pages + " pages";
 
         bookTitle.textContent = volume.title;
-        bookTitle.classList = "book-title"
+        titlePlate.classList = "book-title"
         bookAuthor.textContent = volume.author;
-        bookTitle.classList = "author-name"
-        bookPages.textContent = volume.pages;
+        bookAuthor.classList = "author-name"
+        bookPages.textContent = pageCount;
+        bookPages.classList = "page-count"
         readInput.type = 'checkbox';
-        readLabel.textContent = "Read"
+        readLabel.textContent = " Read";
+        bookRead.classList = "read-div";
+        deleteBtn.src = "./images/trash.svg";
+        deleteBtn.classList = "delete-btn";
 
-        bookCard.appendChild(bookTitle);
+        titlePlate.appendChild(bookTitle);
+        bookCard.appendChild(titlePlate);
         bookCard.appendChild(bookAuthor);
         bookCard.appendChild(bookPages);
         bookRead.appendChild(readInput);
         bookRead.appendChild(readLabel);
-        bookCard.appendChild(bookRead);
+        bookCard.appendChild(bookRead)
+        bookCard.appendChild(deleteBtn);
 
 
         if (volume.read) {

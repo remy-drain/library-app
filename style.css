@@ -175,13 +175,70 @@ input:focus-visible {
 #bookshelf {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
 }
 
 .book {
-    height: 250px;
-    aspect-ratio: 1 / 8;
+    font-family: "Poiret One", sans-serif;
+    height: 300px;
+    width: 75px;
     border: 1px solid black;
     display: grid;
-    
+    position: relative;
+    grid-template-areas: 
+        "author"
+        "."
+        "read"
+        "remove";
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 1fr 75% 1fr 1fr;
+}
+
+.book-title {
+    transform: rotate(90deg);
+    grid-area: title;
+    display: flex;
+    width: 225px;
+    position: absolute;
+}
+
+.book-title p {
+    font-size: .83em;
+}
+
+.author-name {
+    grid-area: author;
+    font-size: .7em;
+    text-align: center;
+}
+
+.page-count {
+    position: absolute;
+    display: none;
+}
+
+.read-div {
+    grid-area: read;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .2em;
+    font-size: .75em;
+}
+
+.read-div input[type=checkbox] {
+    transform: scale(.75);
+}
+
+.delete-btn {
+    grid-area: remove;
+    height: 20px;
+    width: auto;
+    align-self: flex-end;
+    margin-bottom: .2rem;
+}
+
+.delete-btn:hover {
+
 }
