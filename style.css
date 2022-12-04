@@ -180,7 +180,7 @@ input:focus-visible {
 
 .book {
     font-family: "Poiret One", sans-serif;
-    height: 300px;
+    height: 350px;
     width: 75px;
     border: 1px solid black;
     display: grid;
@@ -193,6 +193,7 @@ input:focus-visible {
     align-items: center;
     justify-items: center;
     grid-template-rows: 1fr 75% 1fr 1fr;
+    border-radius: 5px;
 }
 
 .book-title {
@@ -204,7 +205,8 @@ input:focus-visible {
 }
 
 .book-title p {
-    font-size: .83em;
+    font-size: .8em;
+    justify-content: center;
 }
 
 .author-name {
@@ -233,7 +235,7 @@ input:focus-visible {
 
 .delete-btn {
     grid-area: remove;
-    height: 20px;
+    height: 15px;
     width: auto;
     align-self: flex-end;
     margin-bottom: .2rem;

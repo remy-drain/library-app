@@ -17,11 +17,13 @@ const amariNightBrothers = new Book("Amari and the Night Brothers", "B. B. Alsto
 
 myLibrary.push(amariNightBrothers);
 
+
 // display form to add new book
 const newBookButton = document.querySelector("#new-book");
 newBookButton.addEventListener("click", () => {
     const form = document.querySelector("form");
     form.style.visibility = "visible";
+    document.querySelector("#title").focus();
 });
 
 // get form data
@@ -30,17 +32,17 @@ submit.addEventListener("click", addBook);
 
 // add to array from form input
 function addBook(e) {
-const title = document.querySelector("#title").value;
-const author = document.querySelector("#author").value;
-const pages = document.querySelector("#length").value;
-const read = document.querySelector("#read").checked;
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#length").value;
+    const read = document.querySelector("#read").checked;
 
-e.preventDefault();
-let newBook = new Book(title, author, pages, read);
-myLibrary.push(newBook);
-showBooks();
-document.querySelector("form").reset();
-document.querySelector("#title").focus();
+    e.preventDefault();
+    let newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    showBooks();
+    document.querySelector("form").reset();
+    document.querySelector("#title").focus();
 }
 
 // close form
@@ -87,6 +89,7 @@ function showBooks() {
         bookRead.classList = "read-div";
         deleteBtn.src = "./images/trash.svg";
         deleteBtn.classList = "delete-btn";
+        deleteBtn.dataset.key = bookIndex;
 
         titlePlate.appendChild(bookTitle);
         bookCard.appendChild(titlePlate);
@@ -108,4 +111,17 @@ function showBooks() {
         bookCard.dataset.key = bookIndex;
         bookshelf.appendChild(bookCard);
     }
+    const trashIcons = bookshelf.querySelectorAll(".delete-btn");
+
+    trashIcons.forEach((icon) => icon.addEventListener("click", (e) => removeBook(e.path)));
+}
+
+function removeBook(e) {
+    const bookIndex = e[0].attributes["data-key"].nodeValue;
+    let selectedBook = myLibrary[bookIndex];
+
+    if (window.confirm(`Are you sure you want to remove ${selectedBook.title}?`)) {
+        myLibrary.splice(bookIndex, 1);
+    }
+    showBooks();
 }
