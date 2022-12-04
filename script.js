@@ -38,6 +38,7 @@ const read = document.querySelector("#read").checked;
 e.preventDefault();
 let newBook = new Book(title, author, pages, read);
 myLibrary.push(newBook);
+showBooks();
 document.querySelector("form").reset();
 document.querySelector("#title").focus();
 }
@@ -49,8 +50,51 @@ close.addEventListener("click", () => {
     form.style.visibility = "hidden";
 });
 
-
 // display library
-function showBooks() {
+const viewLibrary = document.querySelector("#view-library");
+viewLibrary.addEventListener("click", showBooks);
 
+function showBooks() {
+    let bookshelf = document.querySelector("#bookshelf");
+
+    if (bookshelf.hasChildNodes()) {
+        bookshelf.innerHTML = "";
+    }
+
+    for (let volume of myLibrary) {
+        let bookCard = document.createElement('div');
+        let bookTitle = document.createElement('p');
+        let bookAuthor = document.createElement('p');
+        let bookPages = document.createElement('p');
+        let bookRead = document.createElement('div');
+        let readInput = document.createElement('input');
+        let readLabel = document.createElement('label');
+        let bookIndex = myLibrary.indexOf(volume);
+
+        bookTitle.textContent = volume.title;
+        bookTitle.classList = "book-title"
+        bookAuthor.textContent = volume.author;
+        bookTitle.classList = "author-name"
+        bookPages.textContent = volume.pages;
+        readInput.type = 'checkbox';
+        readLabel.textContent = "Read"
+
+        bookCard.appendChild(bookTitle);
+        bookCard.appendChild(bookAuthor);
+        bookCard.appendChild(bookPages);
+        bookRead.appendChild(readInput);
+        bookRead.appendChild(readLabel);
+        bookCard.appendChild(bookRead);
+
+
+        if (volume.read) {
+            readInput.checked = true;
+        } else {
+            readInput.checked = false;
+        }
+
+        bookCard.classList = "book"
+        bookCard.dataset.key = bookIndex;
+        bookshelf.appendChild(bookCard);
+    }
 }

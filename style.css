@@ -15,18 +15,40 @@
     color: rgb(var(--black));
 }
 
-body {
-    max-width: 900px;
-    display: grid;
+html {
     justify-content: center;
-    margin: 0 auto;
 }
 
-#new-book {
-    margin: 10px auto;
+body {
+    max-width: 900px;
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    padding: 1em;
+    margin-bottom: 1em;
+    justify-content: center;
+}
+
+header div {
+    border: 1px solid rgba(var(--black), .2);
+    border-radius: 5px;
+    padding: .2em;
+}
+header div:hover {
+    cursor: pointer;
 }
 
 form {
+    position: fixed;
     display: grid;
     background: url('./images/card.jpg') no-repeat;
     background-size: cover;
@@ -42,10 +64,15 @@ form {
     "length read"
     "submit submit";
     grid-template-columns: 50% 50%;
-    position: relative;
     border-radius: 8px;
     box-shadow: 0 0 5px;
     visibility: hidden;
+    z-index: 99;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    top: 5em;
 }
 
 form .title {
@@ -143,4 +170,18 @@ input:focus,
 input:focus-visible {
     border-bottom: 1px solid black;
     outline: none;
+}
+
+#bookshelf {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+}
+
+.book {
+    height: 250px;
+    aspect-ratio: 1 / 8;
+    border: 1px solid black;
+    display: grid;
+    
 }
