@@ -85,7 +85,9 @@ function showBooks() {
         bookPages.textContent = pageCount;
         bookPages.classList = "page-count"
         readInput.type = 'checkbox';
+        readInput.id = bookIndex;
         readLabel.textContent = " Read";
+        readLabel.htmlFor = bookIndex;
         bookRead.classList = "read-div";
         deleteBtn.src = "./images/trash.svg";
         deleteBtn.classList = "delete-btn";
@@ -135,5 +137,4 @@ function changeRead(e, parent) {
     const checked = e.checked;
 
     myLibrary[bookIndex].read = checked;
-    console.table(myLibrary[bookIndex]);
 }
